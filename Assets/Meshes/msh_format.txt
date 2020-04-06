@@ -1,0 +1,16 @@
+MeshGeometry // code for MeshGeometry
+1            // version number (has to be 1 to be used by MeshGeometry class)
+1            // number of Meshes
+3            // number of Vertices (in this case, 3 -> triangle )
+3            // number of Indices
+8            // number of Chuncks (i.e number of attributes such as color, potision)
+1      // position enumration
+1 3 5
+0 3 6
+9 0 1  // match the number of vertices (in this case 3)
+8      // colour enumration
+1 0 0 1
+1 0 0 1
+1 0 0 1 // red!
+
+// and number of chuncks should match the number you specified above (in this case 8)

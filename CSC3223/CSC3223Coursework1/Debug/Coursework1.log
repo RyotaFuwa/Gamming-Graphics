@@ -1,0 +1,115 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(459,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Coursework1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  BackGround.cpp
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\BackGround.cpp(87,103): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\BackGround.cpp(87,88): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\BackGround.cpp(87,74): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\BackGround.cpp(87,60): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\BackGround.cpp(187,60): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+  main.cpp
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.h(30,28): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.h(32,27): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.h(33,30): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.h(91,72): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.h(91,94): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.h(92,24): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.h(92,48): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.h(92,93): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.h(92,72): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.h(93,24): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.h(93,47): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\main.cpp(36,20): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\main.cpp(37,18): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\main.cpp(46,58): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\main.cpp(46,42): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\main.cpp(57,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\main.cpp(59,54): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\main.cpp(59,40): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\main.cpp(81,49): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\main.cpp(81,36): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\main.cpp(82,51): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\main.cpp(82,37): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  RasterisationMesh.cpp
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\RasterisationMesh.cpp(103,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\RasterisationMesh.cpp(188,13): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\RasterisationMesh.cpp(189,14): warning C4244: 'initializing': conversion from 'const _Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\RasterisationMesh.cpp(190,12): warning C4244: 'initializing': conversion from 'const _Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\RasterisationMesh.cpp(193,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\RasterisationMesh.cpp(193,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\RasterisationMesh.cpp(205,13): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\RasterisationMesh.cpp(206,14): warning C4244: 'initializing': conversion from 'const _Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\RasterisationMesh.cpp(207,12): warning C4244: 'initializing': conversion from 'const _Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\RasterisationMesh.cpp(210,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\RasterisationMesh.cpp(210,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\RasterisationMesh.cpp(223,16): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\RasterisationMesh.cpp(235,17): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  RasterisationName.cpp
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\RasterisationName.cpp(51,39): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\RasterisationName.cpp(51,62): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\RasterisationName.cpp(51,85): warning C4305: 'argument': truncation from 'double' to 'float'
+  Renderer.cpp
+  RenderObject.cpp
+  SpaceObjects.cpp
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.h(30,28): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.h(32,27): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.h(33,30): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.h(91,72): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.h(91,94): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.h(92,24): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.h(92,48): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.h(92,93): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.h(92,72): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.h(93,24): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.h(93,47): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(16,33): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(24,93): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(24,61): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(25,94): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(25,61): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(161,100): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(161,80): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(161,60): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(161,169): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(161,149): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(161,129): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(162,71): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(162,51): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(162,30): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(162,140): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(162,120): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(162,99): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(163,71): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(163,51): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(163,30): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(163,141): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(163,120): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(163,100): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(164,72): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(164,51): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(164,30): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(164,142): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(164,121): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(164,100): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(173,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(175,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(176,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(177,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\CSC3223\Coursework1\SpaceObjects.cpp(210,50): warning C4305: 'argument': truncation from 'double' to 'float'
+  Tools.cpp
+  Generating Code...
+LINK : fatal error LNK1104: cannot open file 'Common.lib'

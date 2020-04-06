@@ -1,0 +1,8 @@
+﻿  glad.c
+  OGLComputeShader.cpp
+  OGLMesh.cpp
+  OGLRenderer.cpp
+  OGLShader.cpp
+  OGLTexture.cpp
+  Generating Code...
+  OpenGLRendering.vcxproj -> C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\Win32\Debug\OpenGLRendering.lib
