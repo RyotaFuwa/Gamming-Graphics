@@ -1,5 +1,4 @@
 #include "RasterisationMesh.h"
-#include "..//..//Common/Maths.h"
 
 using namespace NCL;
 using namespace CSC3223;

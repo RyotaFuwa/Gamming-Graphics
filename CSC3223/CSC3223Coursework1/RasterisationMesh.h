@@ -1,5 +1,6 @@
 #pragma once
 #include "../../Plugins/OpenGLRendering/OGLMesh.h"
+#include "..//..//Common/Maths.h"
 
 namespace NCL {
 	namespace CSC3223 {
@@ -7,16 +8,16 @@ namespace NCL {
 		public:
 			static RasterisationMesh* CreateTriangleFromPoints(
 				const std::vector<Vector3>& vertices,
-				const std::vector<Vector4>& colours, int type = 0);
+				const std::vector<Vector4>& colours, int type=0);
 
-			static RasterisationMesh* CreateLineFromPoints(const std::vector<Vector3>& vertices,
+			static RasterisationMesh* CreateLineFromPoints(const std::vector<Vector3>& vertices, 
 				const std::vector<Vector4>& colours, bool bresenham);
 		protected:
 			void RasterBasicLine(const Vector3& p0, const Vector3& p1,
-				const Vector4& c0, const Vector4& c1);
+			    const Vector4& c0, const Vector4& c1);
 
 			void RasterBresenhamLine(const Vector3& p0, const Vector3& p1,
-				const Vector4& c0, const Vector4& c1);
+			    const Vector4& c0, const Vector4& c1); 
 
 			void RasterLineEquationTriangle(
 				const Vector3& p0, const Vector3& p1, const Vector3& p2,
@@ -26,10 +27,9 @@ namespace NCL {
 				const Vector3& p0, const Vector3& p1, const Vector3& p2,
 				const Vector4& c0, const Vector4& c1, const Vector4& c2);
 
-			void RasterBarycentricTriangle(
-				const Vector3& p0, const Vector3& p1, const Vector3& p2,
-				const Vector4& c0, const Vector4& c1, const Vector4& c2);
+			void RasterBarycentricTriangle( 
+				const Vector3 & p0, const Vector3& p1, const Vector3& p2,
+				const Vector4 & c0, const Vector4& c1, const Vector4& c2);
 		};
 	}
 }
-	

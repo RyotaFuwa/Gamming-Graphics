@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{A7B69602-BEDC-4158-BF3E-0D7645DFDB88}</ProjectGuid>
-    <RootNamespace>CSC3223Tutorials</RootNamespace>
+    <ProjectGuid>{F77FE082-CD2C-43EC-8E05-98F972F65453}</ProjectGuid>
+    <RootNamespace>CSC3223Coursework</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -71,26 +71,18 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(SolutionDir)\Plugins\OpenGLRendering;$(IncludePath)</IncludePath>
-    <LibraryWPath>
-    </LibraryWPath>
     <LibraryPath>$(SolutionDir)$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(SolutionDir)\Plugins\OpenGLRendering;$(IncludePath)</IncludePath>
-    <LibraryWPath>
-    </LibraryWPath>
     <LibraryPath>$(SolutionDir)$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(SolutionDir)\Plugins\OpenGLRendering;$(IncludePath)</IncludePath>
-    <LibraryWPath>$(SolutionDir)$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryWPath>
     <LibraryPath>$(SolutionDir)$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>$(SolutionDir)\Plugins\OpenGLRendering;$(IncludePath)</IncludePath>
-    <LibraryWPath>$(SolutionDir)$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryWPath>
     <LibraryPath>$(SolutionDir)$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -146,15 +138,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="RasterisationMesh.h" />
-    <ClInclude Include="Renderer.h" />
-    <ClInclude Include="RenderObject.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="CSC3223.cpp" />
+    <ClCompile Include="BackGround.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="RasterisationMesh.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="RenderObject.cpp" />
+    <ClCompile Include="RYOTADraw.cpp" />
+    <ClCompile Include="SpaceObjects.cpp" />
+    <ClCompile Include="Tools.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BackGround.h" />
+    <ClInclude Include="RasterisationMesh.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="RenderObject.h" />
+    <ClInclude Include="RYOTADraw.h" />
+    <ClInclude Include="SpaceObjects.h" />
+    <ClInclude Include="Tools.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

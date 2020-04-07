@@ -1,28 +1,38 @@
 #pragma once
-#include "..//..//Common/Vector3.h"
+#include <vector>
+#include <map>
+
+#include "../../Common/Vector3.h"
 #include "../../Common/Matrix4.h"
-#include "../../Common/TextureBase.h"
+#include "../../Plugins/OpenGLRendering/OGLShader.h"
 #include "../../Common/ShaderBase.h"
 
+#include "Tools.h"
 
-#include <vector>
+
 namespace NCL {
 	using namespace NCL::Rendering;
 	class MeshGeometry;
 	namespace CSC3223 {
 		using namespace Maths;
+		using namespace CW2Tools;
 
 		class RenderObject
 		{
 		public:
+			RenderObject();
 			RenderObject(MeshGeometry* mesh, Matrix4 m = Matrix4());
 			~RenderObject();
 
-			MeshGeometry*		GetMesh() const {
+			void SetMesh(MeshGeometry* mesh) {
+				this->mesh = mesh;
+			}
+
+			MeshGeometry* GetMesh() const {
 				return mesh;
 			}
 
-			void  SetTransform(Matrix4 mat) {
+			void SetTransform(Matrix4 mat) {
 				transform = mat;
 			}
 
@@ -30,16 +40,16 @@ namespace NCL {
 				return transform;
 			}
 
-			void SetBaseTexture(TextureBase* t) {
-				texture = t;
+			void AddTexture(const VarTexture& vt) {
+				textures.push_back(vt);
 			}
 
-			TextureBase* GetBaseTexture() const {
-				return texture;
+			std::vector<VarTexture> GetTextures() const {
+				return textures;
 			}
 
 
-			void SetShader(ShaderBase* s) {
+			void SetShader(OGLShader* s) {
 				shader = s;
 			}
 
@@ -47,11 +57,35 @@ namespace NCL {
 				return shader;
 			}
 
+			void SetTime(float t) {
+				time = t;
+			}
+
+			float GetTime() {
+				return time;
+			}
+
+			void SetDynamic(bool state) {
+				dynamic = state;
+			}
+
+			bool GetDynamic() const {
+				return dynamic;
+			}
+
+			virtual void Move() {}
+			virtual void AddUniforms(const int programID) {}
+
 		protected:
-			MeshGeometry*	mesh;
-			TextureBase*	texture;
-			ShaderBase*		shader;
+			bool createdInside = false;
+			MeshGeometry* mesh;
+			std::vector<VarTexture> textures;
+			OGLShader* shader;
 			Matrix4			transform;
+
+			float time = 0.0f;
+			float lastTime = 0.0f;
+			bool dynamic = false;
 		};
 	}
 }

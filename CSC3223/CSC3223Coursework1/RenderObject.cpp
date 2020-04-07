@@ -12,19 +12,17 @@ RenderObject::RenderObject()
 	mesh = nullptr;
 	transform = Matrix4();
 	shader = nullptr;
+	texture		= nullptr;
 }
 
 RenderObject::RenderObject(MeshGeometry* inMesh, Matrix4 m)
 {
-	mesh = inMesh;
-	transform = m;
-	shader = nullptr;
+	mesh		= inMesh;
+	transform	= m;
+	texture		= nullptr;
+	shader		= nullptr;
 }
 
 RenderObject::~RenderObject()
 {
-	if (createdInside) {
-		delete mesh;
-		mesh = nullptr;
-	}
 }

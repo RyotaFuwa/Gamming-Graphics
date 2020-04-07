@@ -7,7 +7,9 @@
 #include "RenderObject.h"
 #include "../../Common/Vector2.h"
 
+
 namespace NCL {
+	using namespace Maths;
 	namespace CSC3223 {
 
 		class Renderer : public OGLRenderer
@@ -81,7 +83,7 @@ namespace NCL {
 	
 			void OnWindowResize(int w, int h)	override;
 
-			void RenderFrame()	override;
+			void RenderFrame(float dt)	override;
 			OGLShader*		defaultShader;
 
 			Matrix4		projMatrix;

@@ -2,6 +2,7 @@
 #include "../../Common/TextureLoader.h"
 #include "../../Common/Vector3.h"
 #include "../../Common/Vector4.h"
+#include "../../Common/Matrix4.h"
 #include "../../Common/MeshGeometry.h"
 #include "../../Common/Maths.h"
 
@@ -11,15 +12,17 @@
 #include "../../Plugins/OpenGLRendering/OGLTexture.h"
 
 #include "Renderer.h"
+#include "RenderObject.h"
 
 //include RasterisationMesh.h for tutorial 2
 #include "RasterisationMesh.h"
 
 using namespace NCL;
+using namespace Maths;
 using namespace CSC3223;
 
-// tutorial 10
-void Tutorial10_1(Renderer& renderer) {
+// tutorial 10  Shader(Geometry)
+void Tutorial10(Renderer& renderer) {
 	std::vector<Vector4> rgb = {
 		Vector4(1, 0, 0, 1), Vector4(0, 1, 0, 1), Vector4(0, 0, 1, 1) };
 
@@ -40,7 +43,7 @@ void Tutorial10_1(Renderer& renderer) {
 }
 
 
-// tutorial 9
+// tutorial 9 : Shader(Vertex, Fragment)
 void Tutorial9(Renderer& renderer) {
 	std::vector<Vector4> rgb = {
 		Vector4(1, 0, 0, 1), Vector4(0, 1, 0, 1), Vector4(0, 0, 1, 1) };
@@ -62,8 +65,8 @@ void Tutorial9(Renderer& renderer) {
 	renderer.AddRenderObject(object);
 }
 
-// tutorial 8
-void Tutorial8_1(Renderer& renderer) {
+// tutorial 8 : Alpha Blending
+void Tutorial8(Renderer& renderer) {
 	std::vector<Vector3> verts = {
 		Vector3(-1 , -1 ,0) , Vector3(1 , -1 ,0) , Vector3(0 ,1 ,0) };
 
@@ -97,8 +100,8 @@ void Tutorial8_1(Renderer& renderer) {
 	renderer.AddRenderObject(renderObj_blue);
 }
 
-// tutorial 7
-void Tutorial7_1(Renderer& renderer) {
+// tutorial 7 : Texture
+void Tutorial7(Renderer& renderer) {
 	std::vector<Vector3> verts = {
 		Vector3(-1 , -1 ,0) , Vector3(1 , -1 ,0) , Vector3(0 ,1 ,0) };
 	std::vector<Vector4> white = {
@@ -124,14 +127,14 @@ void Tutorial7_1(Renderer& renderer) {
     renderer.AddRenderObject(renderObj);
 }
 
-// tutorial6
-void Tutorial6_1(Renderer& renderer) {
-	std :: vector < Vector4 > red =
-		{ Vector4 (1 ,0 ,0 ,1) , Vector4 (1 ,0 ,0 ,1) , Vector4 (1 ,0 ,0 ,1) };
-	std :: vector < Vector4 > blue =
-		{ Vector4 (0 ,0 ,1 ,1) , Vector4 (0 ,0 ,1 ,1) , Vector4 (0 ,0 ,1 ,1) };
-	std :: vector < Vector3 > verts =
-		{ Vector3 ( -1 , -1 ,0) , Vector3 (1 , -1 ,0) , Vector3 (0 ,1 ,0) };
+// tutorial6: Depth Buffer
+void Tutorial6(Renderer& renderer) {
+	std::vector<Vector4> red =
+		{ Vector4(1 ,0 ,0 ,1) , Vector4(1 ,0 ,0 ,1) , Vector4(1 ,0 ,0 ,1) };
+	std::vector<Vector4> blue =
+		{ Vector4(0 ,0 ,1 ,1) , Vector4(0 ,0 ,1 ,1) , Vector4(0 ,0 ,1 ,1) };
+	std::vector<Vector3> verts =
+		{ Vector3( -1 , -1 ,0) , Vector3(1 , -1 ,0) , Vector3(0 ,1 ,0) };
      
     OGLMesh* redTri = new OGLMesh();
 	redTri->SetVertexPositions(verts);
@@ -146,8 +149,8 @@ void Tutorial6_1(Renderer& renderer) {
 	blueTri->UploadToGPU();
 	}
 
-// tutorial 5
-void Tutorial5_1(Renderer& renderer) {
+// tutorial 5: Camera View, Perspective
+void Tutorial5(Renderer& renderer) {
 	OGLMesh* tri = new OGLMesh("cube.msh");
 	tri->SetPrimitiveType(GeometryPrimitive::Triangles);
 	tri->UploadToGPU();
@@ -167,13 +170,12 @@ void Tutorial5_1(Renderer& renderer) {
 
 			renderer.AddRenderObject(new RenderObject(tri ,
 			translate * rotate * scale ));
-
 		}
 	}
 }
 
-// tutorial 4
-void Tutorial4_1(Renderer& renderer) {
+// tutorial 4 Vertex Transformation
+void Tutorial4(Renderer& renderer) {
 	OGLMesh* tri = new OGLMesh();
 	tri->SetVertexPositions(
 		{ Vector3(-1, 0, 0), Vector3(1, 0, 0), Vector3(0, 1, 0) });
@@ -196,8 +198,9 @@ void Tutorial4_1(Renderer& renderer) {
 	}
 }
 
-// tutorial 2
-void Tutorial2_1(Renderer& renderer) {
+
+// tutorial2, 3: Rasterization, attribute polarization
+void Tutorial2(Renderer& renderer) {
 	//Normal OpenGL mesh in top left
 	std::vector<Vector3> linePos = { Vector3(150, 50, 0), Vector3(180, 80, 0), Vector3(100, 200, 0), Vector3(150, 150, 0) };
 	std::vector<Vector4> lineCol = { Vector4(1, 0, 0, 1), Vector4(0, 0, 1, 1),  Vector4(0, 0, 1, 1),  Vector4(0, 1, 0, 1) };
@@ -226,15 +229,10 @@ void Tutorial2_1(Renderer& renderer) {
 	//point simulation (tri)
 	OGLMesh* rasterTri = (OGLMesh*)RasterisationMesh::CreateTriangleFromPoints(triPos, triCol, 0);
 	renderer.AddRenderObject(new RenderObject(rasterTri));
-
-
-
-	
-	//point simulation (triangle)
 }
 
-// tutorial 1
-void Tutorial1_1(Renderer& renderer) {
+// tutorial 1: Draw meshes
+void Tutorial1(Renderer& renderer) {
 	//draw points
 	OGLMesh* points = new OGLMesh();
 	points->SetVertexPositions({ Vector3(50, 50,0), Vector3(30, 10, 0), Vector3(200, 70, 0) });
@@ -265,19 +263,15 @@ void Tutorial1_1(Renderer& renderer) {
 	renderer.AddRenderObject(new RenderObject(triStrip));
 }
 
-void Tutorial1_2(Renderer& renderer) {
-	//draw trianglefan
-	OGLMesh* points = new OGLMesh();
-	points->SetPrimitiveType(GeometryPrimitive::TriangleFan);
-	points->SetVertexPositions({ Vector3(350, 350, 0), Vector3(350, 300, 0), Vector3(385, 325, 0), Vector3(385, 375, 0), Vector3(350, 400, 0), Vector3(315, 375, 0), Vector3(315, 325, 0), Vector3(350, 300, 0) });
-	points->UploadToGPU();
-	Matrix4 mat = Matrix4::Scale(Vector3(0.2, 0.2, 0));
-
-	renderer.AddRenderObject(new RenderObject(points, mat));
-
+// TEST PLACE
+void Sphere(Renderer& renderer) {
+	OGLMesh* sphere = new OGLMesh("sphere.msh");
+	sphere->SetPrimitiveType(GeometryPrimitive::Triangles);
+	sphere->UploadToGPU();
+	Matrix4 mat = Matrix4::Translation(Vector3(0, 0, -100)) * Matrix4::Scale(Vector3(10, 10, 10));
+	renderer.AddRenderObject(new RenderObject(sphere, mat));
 }
 
-// TEST PLACE
 void Tutorial_a(Renderer& renderer, int num=1000) {
 	OGLMesh* sphere = new OGLMesh("sphere.msh");
 	sphere->SetPrimitiveType(GeometryPrimitive::Triangles);
@@ -286,7 +280,7 @@ void Tutorial_a(Renderer& renderer, int num=1000) {
 		Vector3 pos;
 		pos.x = rand() % 200 - 100;
 		pos.y = rand() % 200 - 100;
-		pos.z = -( rand() % 300 - 50 );
+		pos.z = -(rand() % 300 - 50 );
 
 		float size;
 		size = 0.2 * (rand() % 3);
@@ -333,6 +327,8 @@ int main() {
 	}
 
 	Renderer*	renderer = new Renderer(*w);
+	Sphere(*renderer);
+
 	// tutorial 6
 	// renderer->EnableDepthBuffer(true);
 
@@ -344,12 +340,11 @@ int main() {
 	Matrix4 proj = Matrix4::Perspective(1.0f, 200.0f, aspect, 45.0f);
 	float currentWidth = Window::GetWindow()->GetScreenSize().x;
     float currentHeight = Window::GetWindow()->GetScreenSize().y;
-	Matrix4 mat = Matrix4::Orthographic(-1.0f, 2.0f, - currentWidth * 0.5f, currentWidth * 0.5f,
-	currentHeight * 0.5f, -currentHeight * 0.5f);
-	// renderer->SetProjectionMatrix(proj);
+	// Matrix4 mat = Matrix4::Orthographic(-1.0f, 2.0f, - currentWidth * 0.5f, currentWidth * 0.5f,
+	// currentHeight * 0.5f, -currentHeight * 0.5f);
+	renderer->SetProjectionMatrix(proj);
 
 	// tutorial tasks call
-	Tutorial9(*renderer);
 
 	while (w->UpdateWindow() && !Window::GetKeyboard()->KeyDown(KEYBOARD_ESCAPE)) {
 		float time = w->GetTimer()->GetTotalTimeMSec();
@@ -357,12 +352,12 @@ int main() {
 		renderer->DrawString("B9052919 Ryota Fuwa", Vector2(10, 10));
 
 		// tutorial 8
-		// renderer->EnableAlphaBlending(false);
+		renderer->EnableAlphaBlending(false);
 		// renderer->SetBlendToInvert();
 
 
 
-		renderer->Render();
+		renderer->Render(time);
 
 		if (Window::GetKeyboard()->KeyPressed(KEYBOARD_PRIOR)) {
 			w->ShowConsole(true);

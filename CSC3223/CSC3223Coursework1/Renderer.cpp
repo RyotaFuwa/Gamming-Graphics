@@ -1,12 +1,12 @@
 #include "Renderer.h"
+#include "Tools.h"
+
 #include "../../Common/TextureWriter.h"
 #include "../../Common/Maths.h"
 #include "../../Common/Matrix3.h"
-
 using namespace NCL;
 using namespace Rendering;
 using namespace CSC3223;
-
 
 Renderer::Renderer(Window& w) : OGLRenderer(w)
 {
@@ -14,13 +14,31 @@ Renderer::Renderer(Window& w) : OGLRenderer(w)
 	projMatrix		= Matrix4::Orthographic(-1.0f, 1.0f, (float)currentWidth, 0.0f, 0.0f, (float)currentHeight);
 }
 
-
 Renderer::~Renderer()
 {
 	delete defaultShader;
 }
 
-void Renderer::RenderFrame(float dt) {
+void NCL::CSC3223::Renderer::RemoveRenderObject(RenderObject* ro)
+{
+	auto i = std::find(renderObjects.begin(), renderObjects.end(), ro);
+	renderObjects.erase(i);
+}
+
+void NCL::CSC3223::Renderer::SetRenderObjects(vector<RenderObject*>& vec)
+{
+	renderObjects = vec;
+}
+
+void Renderer::BeginFrame()  {
+	  glClearColor(0.0f, 0.0f, 0.0f, 1.0f); 
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	BindShader(nullptr);
+	BindMesh(nullptr);
+}
+
+void Renderer::RenderFrame(float time) {
 	OGLShader* activeShader = nullptr;
 
 	int modelLocation	= 0; 
@@ -36,20 +54,6 @@ void Renderer::RenderFrame(float dt) {
 		if (objectShader != activeShader) {
 			activeShader = objectShader;
 			BindShader(activeShader);
-
-			int timeLocation = glGetUniformLocation(activeShader->GetProgramID(), "time");
-			if (timeLocation >= 0) {
-				float totalTime = frameTimer.GetTotalTimeMSec() * 1000.0f;
-				glUniform1f(timeLocation, totalTime);
-			}
-
-			int timeLimitLocation = glGetUniformLocation(activeShader->GetProgramID(), "timeLimit");
-			glUniform1f(timeLimitLocation, 20.0f);
-
-			Vector3 centerVec = Vector3(0, 0, 0);
-			int centerLocation  = glGetUniformLocation(activeShader->GetProgramID(), "center");
-			glUniform3fv(centerLocation, 1, (float*)&centerVec);
-			
 			int projLocation	= glGetUniformLocation(activeShader->GetProgramID(), "projMatrix");
 			int viewLocation	= glGetUniformLocation(activeShader->GetProgramID(), "viewMatrix");
 			modelLocation		= glGetUniformLocation(activeShader->GetProgramID(), "modelMatrix");	
@@ -72,32 +76,18 @@ void Renderer::OnWindowResize(int w, int h)	{
 	projMatrix = Matrix4::Orthographic(-1.0f, 1.0f, (float)currentWidth, 0.0f, 0.0f, (float)currentHeight);
 }
 
-void Renderer::EnableBilinearFiltering(OGLTexture& t) {
-	GLuint id = t.GetObjectID();
-	glBindTexture(GL_TEXTURE_2D, id);
-
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-	glBindTexture(GL_TEXTURE_2D, 0);
+void Renderer::EnableDepthBuffer(bool state) {
+	if (state)
+		glEnable(GL_DEPTH_TEST);
+	else
+		glDisable(GL_DEPTH_TEST);
 }
 
-void Renderer::EnableMipMapFiltering(OGLTexture& t) {
-	GLuint id = t.GetObjectID();
-	glBindTexture(GL_TEXTURE_2D, id);
+void Renderer::EnableAlphaBlending(bool state) {
+	if (state)
+		glEnable(GL_BLEND);
+	else
+		glDisable(GL_BLEND);
+}
 
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	
-	glBindTexture(GL_TEXTURE_2D, 0);
-}
-
-void Renderer::EnableTextureRepeating(
-	OGLTexture& t, bool uRepeat, bool vRepeat) {
-	GLuint id = t.GetObjectID();
-	glBindTexture(GL_TEXTURE_2D, id);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,
-		uRepeat ? GL_REPEAT : GL_CLAMP);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,
-		vRepeat ? GL_REPEAT : GL_CLAMP);
-}

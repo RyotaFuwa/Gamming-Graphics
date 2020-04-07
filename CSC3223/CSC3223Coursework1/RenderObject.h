@@ -1,11 +1,16 @@
 #pragma once
+#include <vector>
+#include <map>
+
+#include "../../Common/Vector3.h"
 #include "../../Common/Matrix4.h"
-#include "../../Common/TextureBase.h"
+#include "../../Plugins/OpenGLRendering/OGLShader.h"
 #include "../../Common/ShaderBase.h"
 
-#include <vector>
+
 namespace NCL {
 	using namespace NCL::Rendering;
+
 	class MeshGeometry;
 	namespace CSC3223 {
 		using namespace Maths;
@@ -13,8 +18,9 @@ namespace NCL {
 		class RenderObject
 		{
 		public:
+			RenderObject();
 			RenderObject(MeshGeometry* mesh, Matrix4 m = Matrix4());
-			~RenderObject();
+			virtual ~RenderObject();
 
 			MeshGeometry*		GetMesh() const {
 				return mesh;
