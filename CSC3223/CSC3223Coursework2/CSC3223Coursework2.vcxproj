@@ -23,6 +23,7 @@
     <ProjectGuid>{971649EB-B368-41BE-94FF-1B9982F3C652}</ProjectGuid>
     <RootNamespace>CSC3223Coursework</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Coursework2</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -138,15 +139,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Coursework2.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Cube.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="RenderObject.cpp" />
+    <ClCompile Include="SpaceDusts.cpp" />
+    <ClCompile Include="Tools.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cube.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="RenderObject.h" />
+    <ClInclude Include="SpaceDusts.h" />
+    <ClInclude Include="Tools.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

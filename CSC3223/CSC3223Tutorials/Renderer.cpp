@@ -20,7 +20,7 @@ Renderer::~Renderer()
 	delete defaultShader;
 }
 
-void Renderer::RenderFrame() {
+void Renderer::RenderFrame(float dt) {
 	OGLShader* activeShader = nullptr;
 
 	int modelLocation	= 0; 
