@@ -1,1 +1,2 @@
-﻿
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(459,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (CSC3223Coursework2.vcxproj, Shader Boxes.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  CSC3223Coursework2.vcxproj -> C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\Debug\Coursework2.exe

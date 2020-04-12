@@ -1,6 +1,15 @@
 #pragma once
+#include "../../Plugins/OpenGLRendering/OGLRenderer.h"
+#include "../../Plugins/OpenGLRendering/OGLShader.h"
+#include "../../Plugins/OpenGLRendering/OGLTexture.h"
+#include "../../Plugins/OpenGLRendering/OGLMesh.h"
+
+#include "RenderObject.h"
+#include "../../Common/Vector2.h"
+
 
 namespace NCL {
+	using namespace Maths;
 	namespace CSC3223 {
 
 		class Renderer : public OGLRenderer

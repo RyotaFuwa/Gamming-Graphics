@@ -33,13 +33,14 @@ void NCL::CSC3223::BackGround::ObjectsUpdate(float dt)
 void NCL::CSC3223::BackGround::Update(float dt)
 {
 	ObjectsUpdate(dt);
-	ViewUpdate();
+	ViewUpdate(dt);
 }
 
 void NCL::CSC3223::BackGround::Activate()
 {
 	active = this;
 	renderer->SetRenderObjects(active->objects);
+	active->renderer->SetProjectionMatrix(active->perspective);
 }
 
 NCL::CSC3223::BackGround* NCL::CSC3223::BackGround::GetActiveBG()
@@ -80,7 +81,7 @@ Vector2 NCL::CSC3223::BackGround::GetDepth()
 
 void NCL::CSC3223::BackGround::Reset()
 {
-	SetViewTo();
+	SetViewTo(Vector3(0, 0, 0), Vector3(0, 0, 0));
 	for (unsigned int i = 0; i != objects.size(); i++) {
 		objects[i]->SetTransform(originalPos[i]);
 	}
@@ -102,10 +103,10 @@ void NCL::CSC3223::BackGround::RemoveObject(RenderObject* ro)
 	}
 }
 
-void NCL::CSC3223::BackGround::ViewUpdate()
+void NCL::CSC3223::BackGround::ViewUpdate(float dt)
 {
 	renderer->SetViewMatrix(
-		Matrix4::Translation(viewPos) * Matrix4::Rotation(viewRot.Length(), viewRot)
+		Matrix4::Rotation(viewRot.Length(), viewRot) * Matrix4::Translation(viewPos) 
 	);
 }
 
@@ -216,8 +217,8 @@ NCL::CSC3223::RYOTAName::RYOTAName(Renderer* r):
 
 
 	//orthographic perspective
-	Matrix4 proj2d = Matrix4::Orthographic(-1.0f, 100.0f, 1400, 0, 500, -500);
-	renderer->SetProjectionMatrix(proj2d);
+	perspective = Matrix4::Orthographic(-1.0f, 100.0f, 1400, 0, 500, -500);
+	renderer->SetProjectionMatrix(perspective);
 
 }
 

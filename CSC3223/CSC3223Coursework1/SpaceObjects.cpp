@@ -4,10 +4,13 @@
 #include "../../Common/Matrix4.h"
 #include "../../Plugins/OpenGLRendering/OGLMesh.h"
 #include "RenderObject.h"
+#include "Tools.h";
 
 namespace NCL {
 	namespace CSC3223 {
 		using namespace NCL::Maths;
+		using namespace CW1Tools;
+
 
 		Planet2D::Planet2D(PLANET p, Vector3 pos, Vector3 size)
 		{
@@ -35,16 +38,15 @@ namespace NCL {
 			mesh->SetVertexTextureCoords(planetUvCoords);
 			mesh->UploadToGPU();
 			switch(p) {
-					MOON: SetBaseTexture(OGLTexture::RGBATextureFromFilename("moon.png")); break;
-					SUN: SetBaseTexture(OGLTexture::RGBATextureFromFilename("sun.png")); break;
-					JUPYTER: SetBaseTexture(OGLTexture::RGBATextureFromFilename("jupyter.png")); break;
-					// AURORA: SetBaseTexture(OGLTexture::RGBATextureFromFilename("aurora.png")); break;
-					// BLACK: SetBaseTexture(OGLTexture::RGBATextureFromFilename("black.png")); break;
-					default: break;
+					case PLANET::MOON: SetBaseTexture(OGLTexture::RGBATextureFromFilename("moon.png")); break;
+					case PLANET::SUN: SetBaseTexture(OGLTexture::RGBATextureFromFilename("sun.png")); break;
+					case PLANET::JUPYTER: SetBaseTexture(OGLTexture::RGBATextureFromFilename("jupyter.png")); break;
+					// case PLANET::AURORA: SetBaseTexture(OGLTexture::RGBATextureFromFilename("aurora.png")); break;
+					// case PLANET::BLACK: SetBaseTexture(OGLTexture::RGBATextureFromFilename("black.png")); break;
+					default: SetBaseTexture(OGLTexture::RGBATextureFromFilename("moon.png")); break;
 			}
 		}
 
-		/*
 		Planet2D::Planet2D(const Planet2D& copy, Vector3 pos, Vector3 size)
 		{
 			meshOwner = false;
@@ -53,7 +55,6 @@ namespace NCL {
 
 			texture = copy.GetBaseTexture();
 		}
-		*/
 
 		Planet2D::~Planet2D()
 		{
@@ -66,16 +67,16 @@ namespace NCL {
 			meshOwner = true;
 			transform = Matrix4::Translation(pos) * Matrix4::Scale(size);
 
-			mesh = new OGLMesh();
+			mesh = new OGLMesh("sphere.msh");
 			mesh->SetPrimitiveType(GeometryPrimitive::Triangles);
 			mesh->UploadToGPU();
 			switch(p) {
-			MOON: SetBaseTexture(OGLTexture::RGBATextureFromFilename("moon.png")); break;
-			SUN: SetBaseTexture(OGLTexture::RGBATextureFromFilename("sun.png")); break;
-			JUPYTER: SetBaseTexture(OGLTexture::RGBATextureFromFilename("jupyter.png")); break;
-			// AURORA: SetBaseTexture(OGLTexture::RGBATextureFromFilename("aurora.png")); break;
-			// BLACK: SetBaseTexture(OGLTexture::RGBATextureFromFilename("black.png")); break;
-			default: break;
+				case PLANET::MOON: SetBaseTexture(OGLTexture::RGBATextureFromFilename("moon.png")); break;
+				case PLANET::SUN: SetBaseTexture(OGLTexture::RGBATextureFromFilename("sun.png")); break;
+				case PLANET::JUPYTER: SetBaseTexture(OGLTexture::RGBATextureFromFilename("jupyter.png")); break;
+				// case PLANET::AURORA: SetBaseTexture(OGLTexture::RGBATextureFromFilename("aurora.png")); break;
+				// case PLANET::BLACK: SetBaseTexture(OGLTexture::RGBATextureFromFilename("black.png")); break;
+				default: SetBaseTexture(OGLTexture::RGBATextureFromFilename("moon.png")); break;
 			}
 		}
 
@@ -120,10 +121,9 @@ namespace NCL {
 
 		SpaceDust3D::SpaceDust3D(Vector3 pos, Vector3 size)
 		{
-			meshOwner = false;
+			meshOwner = true;
 			transform = Matrix4::Translation(pos) * Matrix4::Scale(size);
-			mesh = new OGLMesh();
-			mesh->SetPrimitiveType(GeometryPrimitive::Triangles);
+			mesh = new OGLMesh("sphere.msh");
 			mesh->UploadToGPU();
 		}
 
@@ -132,8 +132,6 @@ namespace NCL {
 			meshOwner = false;
 			transform = Matrix4::Translation(pos) * Matrix4::Scale(size);
 			this->mesh = copy.mesh;
-
-			texture = copy.GetBaseTexture();
 		}
 
 		SpaceDust3D::~SpaceDust3D()
@@ -144,6 +142,17 @@ namespace NCL {
 
 		Rock2D::Rock2D(NCL::CSC3223::COLOUR col, Vector3 pos, Vector3 size, Vector3 rot)
 		{
+			const std::vector<Vector3> fanPos = { Vector3(0, 0, 0), Vector3(0.8, 0.2, 0), Vector3(0.3, 0.6, 0),
+			Vector3(-0.2, 0.9, 0) , Vector3(-0.8, 0.5, 0), Vector3(-rand() % 10 / 10.0, -rand() % 10 / 10.0, 0),
+			Vector3(0.4, -0.6, 0), Vector3(0.8, -0.5, 0) };
+			const std::vector<unsigned int> fanIndices = { 0, 1, 2, 3, 4, 5, 6, 7, 1 };
+			const std::vector<Vector4> colourVec = {
+			Vector4(1, 0.1, 0.5, 1.0),
+			Vector4(1, 1, 0, 1.0),
+			Vector4(0, 0.66, 1, 1.0),
+			Vector4(0.5, 0.15, 0.15, 1.0)
+			};
+
 			meshOwner = true;
 			transform = Matrix4::Translation(pos) * Matrix4::Scale(size) * Matrix4::Rotation(rot.z, Vector3(0, 0, rot.z));
 			mesh = new OGLMesh();
@@ -155,7 +164,7 @@ namespace NCL {
 			}
 			mesh->SetVertexColours(vertexCols);
 			mesh->SetVertexIndices(fanIndices);
-
+			mesh->UploadToGPU();
 		}
 
 		Rock2D::Rock2D(const Rock2D& copy, Vector3 pos, Vector3 size, Vector3 rot)
@@ -176,17 +185,45 @@ namespace NCL {
 			meshOwner = true;
 			transform = Matrix4::Translation(pos) * Matrix4::Scale(size) * Matrix4::Rotation(rot.z, Vector3(0, 0, rot.z));
 
-			std::vector<Vector3> vertexPos = { Vector3(rand() % 10 / 10.0, rand() % 10 / 10.0, rand() % 10 / 10.0), Vector3(-rand() % 10 / 10.0, rand() % 10 / 10.0, rand() % 10 / 10.0),
-				Vector3(-rand() % 10 / 10.0, -rand() % 10 / 10.0, rand() % 10 / 10.0), Vector3(rand() % 10 / 10.0, -rand() % 10 / 10.0, rand() % 10 / 10.0),
-				Vector3(-rand() % 10 / 10.0, -rand() % 10 / 10.0, rand() % 10 / 10.0), Vector3(-rand() % 10 / 10.0, rand() % 10 / 10.0, -rand() % 10 / 10.0),
-				Vector3(-rand() % 10 / 10.0, -rand() % 10 / 10.0, -rand() % 10 / 10.0), Vector3(rand() % 10 / 10.0, -rand() % 10 / 10.0, -rand() % 10 / 10.0) };
+			std::vector<Vector3> vertexPos = { 
+				Vector3(rand() % 5 / 10.0 + 0.5, rand() % 5 / 10.0 + 0.5, rand() % 5 / 10.0 + 0.5),
+				Vector3(-1 * (rand() % 5 / 10.0 + 0.5), rand() % 5 / 10.0 + 0.5, rand() % 5 / 10.0 + 0.5),
+				Vector3(-1 * (rand() % 5 / 10.0 + 0.5), -1 * (rand() % 5 / 10.0 + 0.5), rand() % 5 / 10.0 + 0.5),
+				Vector3(rand() % 5 / 10.0 + 0.5, -1 * (rand() % 5 / 10.0 + 0.5), rand() % 5 / 10.0 + 0.5),
+				Vector3(rand() % 5 / 10.0 + 0.5, rand() % 5 / 10.0 + 0.5, -1 * (rand() % 5 / 10.0 + 0.5)), 
+				Vector3(-1 * (rand() % 5 / 10.0 + 0.5), rand() % 5 / 10.0 + 0.5, -1 * (rand() % 5 / 10.0 + 0.5)),
+				Vector3(-1 * (rand() % 5 / 10.0 + 0.5), -1 * (rand() % 5 / 10.0 + 0.5), -1 * (rand() % 5 / 10.0 + 0.5)),
+				Vector3(rand() % 5 / 10.0 + 0.5, -1 * (rand() % 5 / 10.0 + 0.5), -1 * (rand() % 5 / 10.0 + 0.5))
+			};
+
+			typedef std::vector<unsigned int> Indices;
+			std::vector<Indices> surfaceIndices;
+			surfaceIndices.push_back(Indices{ 0, 1, 2, 4 }); // front
+			surfaceIndices.push_back(Indices{ 1, 5, 6, 2 }); // left
+			surfaceIndices.push_back(Indices{ 5, 4, 7, 6 }); // rear
+			surfaceIndices.push_back(Indices{ 4, 0, 3, 7 }); // right
+			surfaceIndices.push_back(Indices{ 6, 7, 3, 2 }); // bottom
+			surfaceIndices.push_back(Indices{ 0, 4, 5, 1 }); // top
+
+			std::vector<Vector3> centers;
+			for (Indices is : surfaceIndices) {
+				std::vector<Vector3> surface;
+				for (unsigned int i : is) {
+					surface.push_back(vertexPos[i]);
+				}
+				centers.push_back(GetCentroidVector(surface) + GetSurfaceVector(surface) * (rand() % 10 / 10.0 + 0.25));
+			}
+			vertexPos.insert(vertexPos.end(), centers.begin(), centers.end());
+
 			std::vector<unsigned int> vertexIndices = {
-				0, 1, 2, 0, 3, 2, // front
-				0, 4, 5, 0, 1, 5, // upper
-				3, 7, 6, 3, 2, 6, // bottom
-				4, 5, 6, 4, 7, 6, // back
-				3, 0, 4, 3, 7, 4, // right side
-				5, 1, 2, 5, 6, 2 }; // left side
+				0, 1, 8, 1, 2, 8, 2, 3, 8, 0, 3, 8,     // front
+				5, 1, 9, 5, 6, 9, 6, 2, 9, 2, 1, 9,     // left
+				4, 5, 10, 5, 6, 10, 6, 7, 10, 7, 4, 10, // rear 
+				4, 0, 11, 0, 3, 11, 3, 7, 11, 7, 4, 11, // right
+				7, 6, 12, 6, 2, 12, 2, 3, 12, 3, 7, 12, // bottom
+				4, 5, 13, 5, 1, 13, 1, 0, 13, 0, 4, 13  // top
+			};
+				
 			std::vector<Vector4> vertexCols;
 			for (int i = 0; i < vertexPos.size(); i++) {
 				// make it look brown
@@ -221,7 +258,7 @@ namespace NCL {
 		SpaceShip::SpaceShip(Vector3 pos, Vector3 size, Vector3 rot)
 		{
 			meshOwner = true;
-			transform = Matrix4::Translation(pos) * Matrix4::Scale(size) * Matrix4::Rotation(rot.z, Vector3(0, 0, rot.z));
+			transform = Matrix4::Translation(pos) * Matrix4::Scale(size) * Matrix4::Rotation(rot.Length(), rot);
 
 			mesh = new OGLMesh();
 			mesh->SetPrimitiveType(GeometryPrimitive::Triangles);

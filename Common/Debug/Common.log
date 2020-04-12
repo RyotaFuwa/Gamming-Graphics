@@ -22,8 +22,8 @@
   Compiling...
   Win32Mouse.cpp
   Win32Window.cpp
-C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\Common\Win32Window.cpp(137,20): warning C4244: '=': conversion from 'DWORD' to 'float', possible loss of data
-C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\Common\Win32Window.cpp(138,20): warning C4244: '=': conversion from 'DWORD' to 'float', possible loss of data
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\Common\Win32Window.cpp(137,20): warning C4244: '=': conversion from 'DWORD' to 'float', possible loss of data
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\Common\Win32Window.cpp(138,20): warning C4244: '=': conversion from 'DWORD' to 'float', possible loss of data
   Window.cpp
   Generating Code...
-  Common.vcxproj -> C:\Users\ryota\OneDrive\Desktop\Graphics_CodeBase\Win32\Debug\Common.lib
+  Common.vcxproj -> C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\Win32\Debug\Common.lib

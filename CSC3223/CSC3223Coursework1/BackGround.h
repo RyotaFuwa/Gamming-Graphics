@@ -15,7 +15,7 @@ namespace NCL {
 
 			void SetObject(RenderObject* ro, Vector3 velocity=Vector3(0, 0, 0), Vector3 angularVelocity=Vector3(0, 0, 0));
 			void RemoveObject(RenderObject* ro);
-			void ViewUpdate();
+			void ViewUpdate(float dt);
 			void ObjectsUpdate(float dt);
 			void Update(float dt);
 			void Activate();

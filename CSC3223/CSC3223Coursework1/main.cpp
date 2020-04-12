@@ -22,12 +22,13 @@
 #include "Tools.h"
 
 
-
+//TODO view matrix
+//TODO stardust etc
 
 
 using namespace NCL;
 using namespace CSC3223;
-using namespace CW2Tools;
+using namespace CW1Tools;
 
 
 BackGround SpaceScene2D(BackGround& bg2, const Window* w) {
@@ -35,18 +36,23 @@ BackGround SpaceScene2D(BackGround& bg2, const Window* w) {
     float height = w->GetScreenSize().y;
     int widthHight = width * width;
     int longAxis = max(width, height);
+	Vector2 depth = bg2.GetDepth();
+	int centerZ = depth[0] + depth[1] / 2.0;
 
     // cheap space ship
-    RenderObject* spaceShip = new SpaceShip(Vector3(0, 0, - bg2.GetDepth()[1] / 2.0), Vector3(5, 5, 5), Vector3(0, 0, 0));
+    RenderObject* spaceShip = new SpaceShip(Vector3(0, 0, -bg2.GetDepth()[0]), Vector3(15, 15, 15), Vector3(0, 0, 0));
     bg2.SetObject(spaceShip);
 
     // planet 2D
-    int planetNum = 4;
+    int planetNum = 7;
     for (int i = 0; i < planetNum; i++) {
-        Vector3 pos = RandVec3(-longAxis / 2.0, longAxis / 2.0);
-        pos.z = RandBetween(bg2.GetDepth()[0], bg2.GetDepth()[1]);
+        Vector3 pos;
+        pos.x = rand() % (int)width - width / 2.0;
+        pos.y = rand() % (int)height - height / 2.0;
+        pos.z = -bg2.GetDepth()[1] / 2.0;
 
-        Vector3 size = RandSize(25, 50);
+        int s = rand() % 50 + 25;
+        Vector3 size(s, s, s);
         int planetType = (i % 3); //MOON, SUN, JUPYTER
         RenderObject* planet = new Planet2D((PLANET)planetType, pos, size);
         bg2.SetObject(planet);
@@ -54,12 +60,42 @@ BackGround SpaceScene2D(BackGround& bg2, const Window* w) {
 
     // star field
     SpaceDust2D* dust0 = new SpaceDust2D(Vector3());
-    int starNum = (int)widthHight * 0.01;
-    for (int i = 0; i < starNum; i++) {
-        Vector3 pos = RandVec3(-height / 2.0, height / 2.0);
-        pos.z = 0.0f;
+    int dustNum = (int)widthHight * 0.01;
+    for (int i = 0; i < dustNum; i++) {
+        Vector3 pos;
+        pos.x = rand() % (int)width - width / 2.0;
+        pos.y = rand() % (int)height - height / 2.0;
+        pos.z = -1.25 * (rand() % (int)(depth[1] - depth[0]));
         RenderObject* dust = new SpaceDust2D(*dust0, pos);
         bg2.SetObject(dust);
+    }
+
+    // rocks
+    Rock2D* rock00 = new Rock2D(COLOUR::BLUE);
+    Rock2D* rock01 = new Rock2D(COLOUR::PINK);
+    Rock2D* rock02 = new Rock2D(COLOUR::YELLOW);
+    Rock2D* rock03 = new Rock2D(COLOUR::BROWN);
+    int rockNum = 10;
+    for (int i = 0; i < rockNum; i++) {
+        Vector3 pos;
+        pos.x = rand() % (int)width - width / 2.0;
+        pos.y = rand() % (int)height - height / 2.0;
+        pos.z = - (int)(depth[0] + 1.0);
+        float s = rand() % 40 + 10;
+        Vector3 size(s, s, s);
+        Vector3 velocity, angularVelocity;
+        velocity.x = rand() % 10;
+        velocity.y = rand() % 10;
+        velocity.z = 0;
+        angularVelocity.z = rand() % 30;
+
+        switch (rand() % 4) {
+        case 0: { RenderObject* rock = new Rock2D(*rock00, pos, size, Vector3(0, 0, 0)); bg2.SetObject(rock, velocity, angularVelocity); break; }
+        case 1: { RenderObject* rock = new Rock2D(*rock01, pos, size, Vector3(0, 0, 0)); bg2.SetObject(rock, velocity, angularVelocity); break; }
+        case 2: { RenderObject* rock = new Rock2D(*rock02, pos, size, Vector3(0, 0, 0)); bg2.SetObject(rock, velocity, angularVelocity); break; }
+        case 3: { RenderObject* rock = new Rock2D(*rock03, pos, size, Vector3(0, 0, 0)); bg2.SetObject(rock, velocity, angularVelocity); break; }
+        default: break;
+        }
     }
     return bg2;
 }
@@ -68,35 +104,62 @@ BackGround SpaceScene2D(BackGround& bg2, const Window* w) {
 BackGround SpaceScene3D(BackGround& bg3, const Window* w) {
     float width = w->GetScreenSize().x;
     float height = w->GetScreenSize().y;
+    Vector2 depth = bg3.GetDepth();
+	int centerZ = depth[0] + depth[1] / 2.0;
 
     // cheap space ship
-    RenderObject* spaceShip = new SpaceShip(Vector3(0, 0, bg3.GetDepth()[1] + 10.0), Vector3(5, 5, 5), Vector3(-65, 0, 0));
+    RenderObject* spaceShip = new SpaceShip(Vector3(0, 0, -depth[0] - 15.0), Vector3(1, 1, 1), Vector3(-65, 15, 0));
     bg3.SetObject(spaceShip);
 
-    // little stars 
-    int num = 1000;
-    SpaceDust3D* starDust0 = new SpaceDust3D(Vector3(), Vector3());
-    for (int i = 0; i < num; i++) {
+    // planets
+
+    // rocks
+    RandomRock* rock0 = new RandomRock();
+    int rockNum = 50;
+    for (int i = 0; i < rockNum; i++) {
         Vector3 pos;
-        pos.x = RandBetween(-width / 2.0, width / 2.0);
-        pos.y = RandBetween(-height / 2.0, height / 2.0);
-        pos.z = -RandBetween(0, 400);
-
-        Vector3 size = RandSize(1, 4) * 0.25;
-
-        Vector3 velocity(0, 0, 0), angularVelocity(0, 0, 0);
-        if (i % 3 == 0) {
-            velocity.x = RandBetween(-1.0, 1.0);
-            velocity.y = RandBetween(-1.0, 1.0);
-            velocity.z = RandBetween(-1.0, 1.0);
-            angularVelocity.x = RandBetween(-1.0, 1.0);
-            angularVelocity.y = RandBetween(-1.0, 1.0);
-            angularVelocity.z = RandBetween(-1.0, 1.0);
-        }
-        RenderObject* starDust = new SpaceDust3D(*starDust0, pos, size);
-        bg3.SetObject(starDust, velocity, angularVelocity);
+        pos.x = rand() % (int)width - width / 2.0;
+        pos.y = rand() % (int)height - height / 2.0;
+        pos.z = -(depth[0] + 1.25 * (rand() % (int)(depth[1] - depth[0])));
+        float s = rand() % 100 / 10.0 + 3.0;
+        Vector3 size(s, s, s);
+        Vector3 velocity, angularVelocity;
+        velocity.x = rand() % 10;
+        velocity.y = rand() % 10;
+        velocity.z = rand() % 10;
+        angularVelocity.x = rand() % 100;
+        angularVelocity.y = rand() % 100;
+        angularVelocity.z = rand() % 100;
+        RenderObject* rock = new RandomRock(*rock0, pos, size, Vector3(0, 0, 0));
+        bg3.SetObject(rock, velocity, angularVelocity);
     }
 
+	// little stars 
+	int num = 3000;
+	SpaceDust3D* starDust0 = new SpaceDust3D(Vector3(), Vector3());
+	for (int i = 0; i < num; i++) {
+		Vector3 pos;
+		pos.x = rand() % (int)width - width / 2.0;
+		pos.y = rand() % (int)height - height / 2.0;
+		pos.z = -(depth[0] + 2.5 * (rand() % (int)(depth[1] - depth[0])));
+
+		float s = (rand() % 3 + 1) * 0.25;
+		Vector3 size(s, s, s);
+
+		/*
+		Vector3 velocity(0, 0, 0), angularVelocity(0, 0, 0);
+		if (i % 3 == 0) {
+			velocity.x = RandBetween(-10.0, 10.0);
+			velocity.y = RandBetween(-1.0, 1.0);
+			velocity.z = RandBetween(-1.0, 1.0);
+			angularVelocity.x = RandBetween(-1.0, 1.0);
+			angularVelocity.y = RandBetween(-1.0, 1.0);
+			angularVelocity.z = RandBetween(-1.0, 1.0);
+		}
+		*/
+		RenderObject* starDust = new SpaceDust3D(*starDust0, pos, size);
+		bg3.SetObject(starDust);
+	}
     return bg3;
 }
 
@@ -112,6 +175,7 @@ int main() {
     }
 
     Renderer* renderer = new Renderer(*w);
+	renderer->EnableDepthBuffer(true);
 
     BackGround bg2 = BackGround2D(renderer, width, height, Vector2(2.0, 100));
     bg2 = SpaceScene2D(bg2, w);
@@ -167,36 +231,36 @@ int main() {
         if (Window::GetKeyboard()->KeyPressed(KEYBOARD_END)) {
             w->SetFullScreen(false);
         }
-        if (Window::GetKeyboard()->KeyDown(KEYBOARD_BACK)) {
+        if (Window::GetKeyboard()->KeyPressed(KEYBOARD_BACK)) {
         }
 
         // rasterisation
-        if (Window::GetKeyboard()->KeyDown(KEYBOARD_F1)) {
+        if (Window::GetKeyboard()->KeyPressed(KEYBOARD_F1)) {
             depthBuffer = !depthBuffer;
             renderer->EnableDepthBuffer(depthBuffer);
         }
-        if (Window::GetKeyboard()->KeyDown(KEYBOARD_F2)) {
+        if (Window::GetKeyboard()->KeyPressed(KEYBOARD_F2)) {
             glDepthFunc(GL_LEQUAL);
         }
-        if (Window::GetKeyboard()->KeyDown(KEYBOARD_F3)) {
+        if (Window::GetKeyboard()->KeyPressed(KEYBOARD_F3)) {
             glDepthFunc(GL_ALWAYS);
 
         }
-        if (Window::GetKeyboard()->KeyDown(KEYBOARD_F4)) {
+        if (Window::GetKeyboard()->KeyPressed(KEYBOARD_F4)) {
             glDepthFunc(GL_EQUAL);
 
         }
-        if (Window::GetKeyboard()->KeyDown(KEYBOARD_F5)) {
+        if (Window::GetKeyboard()->KeyPressed(KEYBOARD_F5)) {
             alphaBlend = !alphaBlend;
             renderer->EnableAlphaBlending(alphaBlend);
         }
-        if (Window::GetKeyboard()->KeyDown(KEYBOARD_F6)) {
+        if (Window::GetKeyboard()->KeyPressed(KEYBOARD_F6)) {
             glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         }
-        if (Window::GetKeyboard()->KeyDown(KEYBOARD_F7)) {
+        if (Window::GetKeyboard()->KeyPressed(KEYBOARD_F7)) {
             glBlendFunc(GL_ONE, GL_ONE);
         }
-        if (Window::GetKeyboard()->KeyDown(KEYBOARD_F8)) {
+        if (Window::GetKeyboard()->KeyPressed(KEYBOARD_F8)) {
             glBlendFunc(GL_ONE_MINUS_SRC_COLOR, GL_ONE_MINUS_DST_COLOR);
         }
 
@@ -231,10 +295,10 @@ int main() {
 		if (Window::GetKeyboard()->KeyDown(KEYBOARD_D)) {
             activeBG->SetViewRot(activeBG->GetViewRot() - Vector3(0.5f, 0.0f, 0.0f));
 		}
-		if (Window::GetKeyboard()->KeyDown(KEYBOARD_R)) {
+		if (Window::GetKeyboard()->KeyDown(KEYBOARD_V)) {
             activeBG->SetViewRot(activeBG->GetViewRot() + Vector3(0.0f, 0.5f, 0.0f));
 		}
-		if (Window::GetKeyboard()->KeyDown(KEYBOARD_B)) {
+		if (Window::GetKeyboard()->KeyDown(KEYBOARD_C)) {
             activeBG->SetViewRot(activeBG->GetViewRot() - Vector3(0.0f, 0.5f, 0.0f));
 		}
 

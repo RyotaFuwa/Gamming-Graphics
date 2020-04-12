@@ -11,7 +11,6 @@ https://research.ncl.ac.uk/game/
 #include "glad\glad.h"
 #include "../../CSC3223/CSC3223Coursework2/Tools.h"
 
-using namespace CW2Tools;
 
 namespace NCL {
 	namespace Rendering {
@@ -20,7 +19,7 @@ namespace NCL {
 		public:
 			friend class OGLRenderer;
 			OGLShader(const string& vertex, const string& fragment, const string& geometry = "", const string& domain = "", const string& hull = "");
-			OGLShader(ShaderBundle sb);
+			OGLShader(CW2Tools::ShaderBundle sb);
 			~OGLShader();
 
 			void ReloadShader() override;

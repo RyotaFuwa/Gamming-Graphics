@@ -2,6 +2,7 @@
 #include "../../Common/TextureLoader.h"
 #include "../../Common/Vector3.h"
 #include "../../Common/Vector4.h"
+#include "../../Common/Matrix4.h"
 #include "../../Common/MeshGeometry.h"
 #include "../../Common/Maths.h"
 
@@ -11,11 +12,13 @@
 #include "../../Plugins/OpenGLRendering/OGLTexture.h"
 
 #include "Renderer.h"
+#include "RenderObject.h"
 
 //include RasterisationMesh.h for tutorial 2
 #include "RasterisationMesh.h"
 
 using namespace NCL;
+using namespace Maths;
 using namespace CSC3223;
 
 // tutorial 10  Shader(Geometry)
@@ -261,6 +264,14 @@ void Tutorial1(Renderer& renderer) {
 }
 
 // TEST PLACE
+void Sphere(Renderer& renderer) {
+	OGLMesh* sphere = new OGLMesh("sphere.msh");
+	sphere->SetPrimitiveType(GeometryPrimitive::Triangles);
+	sphere->UploadToGPU();
+	Matrix4 mat = Matrix4::Translation(Vector3(0, 0, -100)) * Matrix4::Scale(Vector3(10, 10, 10));
+	renderer.AddRenderObject(new RenderObject(sphere, mat));
+}
+
 void Tutorial_a(Renderer& renderer, int num=1000) {
 	OGLMesh* sphere = new OGLMesh("sphere.msh");
 	sphere->SetPrimitiveType(GeometryPrimitive::Triangles);
@@ -269,7 +280,7 @@ void Tutorial_a(Renderer& renderer, int num=1000) {
 		Vector3 pos;
 		pos.x = rand() % 200 - 100;
 		pos.y = rand() % 200 - 100;
-		pos.z = -( rand() % 300 - 50 );
+		pos.z = -(rand() % 300 - 50 );
 
 		float size;
 		size = 0.2 * (rand() % 3);
@@ -316,6 +327,7 @@ int main() {
 	}
 
 	Renderer*	renderer = new Renderer(*w);
+	Sphere(*renderer);
 
 	// tutorial 6
 	// renderer->EnableDepthBuffer(true);
@@ -328,12 +340,11 @@ int main() {
 	Matrix4 proj = Matrix4::Perspective(1.0f, 200.0f, aspect, 45.0f);
 	float currentWidth = Window::GetWindow()->GetScreenSize().x;
     float currentHeight = Window::GetWindow()->GetScreenSize().y;
-	Matrix4 mat = Matrix4::Orthographic(-1.0f, 2.0f, - currentWidth * 0.5f, currentWidth * 0.5f,
-	currentHeight * 0.5f, -currentHeight * 0.5f);
-	// renderer->SetProjectionMatrix(proj);
+	// Matrix4 mat = Matrix4::Orthographic(-1.0f, 2.0f, - currentWidth * 0.5f, currentWidth * 0.5f,
+	// currentHeight * 0.5f, -currentHeight * 0.5f);
+	renderer->SetProjectionMatrix(proj);
 
 	// tutorial tasks call
-	Tutorial9(*renderer);
 
 	while (w->UpdateWindow() && !Window::GetKeyboard()->KeyDown(KEYBOARD_ESCAPE)) {
 		float time = w->GetTimer()->GetTotalTimeMSec();

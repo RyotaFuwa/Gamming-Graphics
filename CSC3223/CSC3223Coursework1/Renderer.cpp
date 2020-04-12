@@ -7,7 +7,6 @@
 using namespace NCL;
 using namespace Rendering;
 using namespace CSC3223;
-using namespace CW2Tools;
 
 Renderer::Renderer(Window& w) : OGLRenderer(w)
 {

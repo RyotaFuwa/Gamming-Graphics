@@ -14,7 +14,6 @@ namespace NCL {
 	class MeshGeometry;
 	namespace CSC3223 {
 		using namespace Maths;
-		using namespace CW2Tools;
 
 		class RenderObject
 		{

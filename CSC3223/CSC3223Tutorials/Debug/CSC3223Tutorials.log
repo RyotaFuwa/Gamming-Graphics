@@ -1,1 +1,52 @@
-﻿
+﻿  CSC3223.cpp
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\CSC3223.cpp(74,55): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\CSC3223.cpp(160,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\CSC3223.cpp(161,22): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\CSC3223.cpp(164,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\CSC3223.cpp(164,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\CSC3223.cpp(166,20): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\CSC3223.cpp(190,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\CSC3223.cpp(190,21): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\CSC3223.cpp(192,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\CSC3223.cpp(193,60): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\CSC3223.cpp(281,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\CSC3223.cpp(282,24): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\CSC3223.cpp(283,11): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\CSC3223.cpp(286,14): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\CSC3223.cpp(299,63): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\CSC3223.cpp(350,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  RasterisationMesh.cpp
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\RasterisationMesh.cpp(103,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\RasterisationMesh.cpp(188,13): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\RasterisationMesh.cpp(189,14): warning C4244: 'initializing': conversion from 'const _Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\RasterisationMesh.cpp(190,12): warning C4244: 'initializing': conversion from 'const _Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\RasterisationMesh.cpp(193,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\RasterisationMesh.cpp(193,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\RasterisationMesh.cpp(205,13): warning C4244: 'initializing': conversion from 'const float' to 'int', possible loss of data
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\RasterisationMesh.cpp(206,14): warning C4244: 'initializing': conversion from 'const _Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\RasterisationMesh.cpp(207,12): warning C4244: 'initializing': conversion from 'const _Ty' to 'int', possible loss of data
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\RasterisationMesh.cpp(210,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\RasterisationMesh.cpp(210,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\RasterisationMesh.cpp(223,16): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\RasterisationMesh.cpp(235,17): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  Renderer.cpp
+C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\CSC3223\CSC3223Tutorials\Renderer.cpp(42,21): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  RenderObject.cpp
+  Generating Code...
+  CSC3223Tutorials.vcxproj -> C:\Users\ryota\Downloads\Graphics_CodeBase - Copy (2)\Win32\Debug\CSC3223Tutorials.exe
