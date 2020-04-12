@@ -22,7 +22,8 @@ namespace NCL {
 		double	GetTotalTimeMSec()		const;
 
 		//Rich - Compatability with CSC3223
-		float	GetDeltaTime()			const { return GetTimeDeltaSeconds(); };
+		float	GetTimeDelta()			const { return GetTimeDeltaSeconds(); };
+		float	GetTotalTime()			const { return (float)GetTotalTimeSeconds(); };
 
 		float	GetTimeDeltaSeconds()	const { return timeDelta; };
 		float	GetTimeDeltaMSec()		const { return timeDelta * 1000.0f; };

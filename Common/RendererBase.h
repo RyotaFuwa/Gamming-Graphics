@@ -27,9 +27,9 @@ namespace NCL {
 
 			virtual void Update(float dt) {}
 
-			void Render() {
+			void Render(float time) {
 				BeginFrame();
-				RenderFrame();
+				RenderFrame(time);
 				EndFrame();
 			}
 
@@ -42,7 +42,7 @@ namespace NCL {
 			virtual void OnWindowDetach() {}; //Most renderers won't care about this
 			
 			virtual void BeginFrame()	= 0;
-			virtual void RenderFrame()	= 0;
+			virtual void RenderFrame(float time)	= 0;
 			virtual void EndFrame()		= 0;
 			
 			Window& hostWindow;

@@ -48,6 +48,10 @@ namespace NCL {
 				return initState;
 			}
 
+			void ForceValidDebugState(bool newState)  {
+				forceValidDebugState = newState;
+			}
+
 			virtual bool SetVerticalSync(VerticalSyncState s);
 
 			void DrawString(const std::string& text, const Vector2&pos, const Vector4& colour = Vector4(0.75f, 0.75f, 0.75f,1));
@@ -59,7 +63,7 @@ namespace NCL {
 
 		protected:			
 			void BeginFrame()	override;
-			void RenderFrame()	override;
+			void RenderFrame(float time)	override;
 			void EndFrame()		override;
 
 			void DrawDebugData();
@@ -99,6 +103,7 @@ namespace NCL {
 			std::vector<DebugLine>		debugLines;
 
 			bool initState;
+			bool forceValidDebugState;
 		};
 	}
 }

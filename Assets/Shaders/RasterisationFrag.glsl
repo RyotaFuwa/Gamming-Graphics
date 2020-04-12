@@ -14,8 +14,7 @@ void main(void)
 {	
 	if(textureSize(mainTex, 1).x < 1.0f) {
 		fragColor = IN.colour;
-	}
-	else {
+	} else {
 		fragColor = texture(mainTex, IN.texCoord) * IN.colour;
 	}
 }

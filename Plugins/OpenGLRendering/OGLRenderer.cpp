@@ -63,9 +63,10 @@ OGLRenderer::OGLRenderer(Window& w) : RendererBase(w)	{
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 			glBindTexture(GL_TEXTURE_2D, 0);
 		}
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // modified for space theme
+		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		debugShader = new OGLShader("debugVert.glsl", "debugFrag.glsl");
 	}
+	forceValidDebugState = false;
 }
 
 OGLRenderer::~OGLRenderer()	{
@@ -83,14 +84,13 @@ void OGLRenderer::OnWindowResize(int w, int h)	 {
 }
 
 void OGLRenderer::BeginFrame()		{
-    glClearColor(0.2f, 0.2f, 0.2f, 1.0f); //modified for space theme
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	BindShader(nullptr);
 	BindMesh(nullptr);
 }
 
-void OGLRenderer::RenderFrame()		{
+void OGLRenderer::RenderFrame(float time)		{
 
 }
 
@@ -205,11 +205,16 @@ void OGLRenderer::DrawLine(const Vector3& start, const Vector3& end, const Vecto
 }
 
 void OGLRenderer::DrawDebugData() {
+	if (debugStrings.empty() && debugLines.empty()) {
+		return; //don't mess with OGL state if there's no point!
+	}
 	BindShader(debugShader);
 
-	glEnable(GL_BLEND);
-	glDisable(GL_DEPTH_TEST);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	if (forceValidDebugState) {
+		glEnable(GL_BLEND);
+		glDisable(GL_DEPTH_TEST);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	}
 
 	int switchLocation = glGetUniformLocation(debugShader->GetProgramID(), "useMatrix");
 
@@ -219,9 +224,11 @@ void OGLRenderer::DrawDebugData() {
 	glUniform1i(switchLocation, 1);
 	DrawDebugLines();
 
-	glDisable(GL_BLEND);
-	glEnable(GL_DEPTH_TEST);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	if (forceValidDebugState) {
+		glDisable(GL_BLEND);
+		glEnable(GL_DEPTH_TEST);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	}
 }
 
 void OGLRenderer::DrawDebugStrings() {

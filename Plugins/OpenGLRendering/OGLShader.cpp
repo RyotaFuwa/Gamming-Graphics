@@ -41,6 +41,17 @@ OGLShader::OGLShader(const string& vertex, const string& fragment, const string&
 	ReloadShader();
 }
 
+OGLShader::OGLShader(CW2Tools::ShaderBundle sb) : ShaderBase(sb.vert, sb.frag, sb.geom, sb.tessCtrl, sb.tessEval) {
+
+	for (int i = 0; i < ShaderStages::SHADER_MAX; ++i) {
+		shaderIDs[i]	= 0;
+		shaderValid[i]	= 0;
+	}
+	programID = 0;
+
+	ReloadShader();
+}
+
 OGLShader::~OGLShader()	{
 	DeleteIDs();
 }
