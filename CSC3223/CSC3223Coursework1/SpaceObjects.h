@@ -14,6 +14,7 @@ namespace NCL {
 			MOON,
 			SUN,
 			JUPYTER,
+			NEPTUNE,
 			RAINBOW,
 			BLACKHOLE,
 		};

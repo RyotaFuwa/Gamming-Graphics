@@ -41,6 +41,7 @@ namespace NCL {
 					case PLANET::MOON: SetBaseTexture(OGLTexture::RGBATextureFromFilename("moon.png")); break;
 					case PLANET::SUN: SetBaseTexture(OGLTexture::RGBATextureFromFilename("sun.png")); break;
 					case PLANET::JUPYTER: SetBaseTexture(OGLTexture::RGBATextureFromFilename("jupyter.png")); break;
+					case PLANET::NEPTUNE: SetBaseTexture(OGLTexture::RGBATextureFromFilename("neptune.png")); break;
 					// case PLANET::AURORA: SetBaseTexture(OGLTexture::RGBATextureFromFilename("aurora.png")); break;
 					// case PLANET::BLACK: SetBaseTexture(OGLTexture::RGBATextureFromFilename("black.png")); break;
 					default: SetBaseTexture(OGLTexture::RGBATextureFromFilename("moon.png")); break;

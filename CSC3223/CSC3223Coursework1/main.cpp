@@ -53,7 +53,7 @@ BackGround SpaceScene2D(BackGround& bg2, const Window* w) {
 
         int s = rand() % 50 + 25;
         Vector3 size(s, s, s);
-        int planetType = (i % 3); //MOON, SUN, JUPYTER
+        int planetType = (i % 4); //MOON, SUN, JUPYTER, NEPTUNE
         RenderObject* planet = new Planet2D((PLANET)planetType, pos, size);
         bg2.SetObject(planet);
     }
